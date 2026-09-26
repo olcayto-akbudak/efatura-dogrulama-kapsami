@@ -1,0 +1,5 @@
+{"satici":{"vkn_tckn":"1234567890","unvan":"Örnek Boya Sanayi A.Ş.","vergi_dairesi":"Selçuk","adres":"Organize Sanayi 5. Cadde No:12","ilce":"Selçuklu","sehir":"Konya"},
+ "alici":{"vkn_tckn":"9876543217","unvan":"Deneme Yapı Market Ltd. Şti.","vergi_dairesi":"Meram","adres":"Yeni Meram Cad. No:40","ilce":"Meram","sehir":"Konya"},
+ "satirlar":[{"ad":"İç cephe boyası 15 L","miktar":"10","birim":"C62","birim_fiyat":"1250","kdv_orani":"20"},
+             {"ad":"Boya fırçası seti","miktar":"4","birim":"C62","birim_fiyat":"87.5","kdv_orani":"10"}],
+ "senaryo":"TEMELFATURA","no":"ABC2026000000123","tarih":"2026-09-25","uuid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}
