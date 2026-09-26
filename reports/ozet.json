@@ -1,0 +1,143 @@
+{
+  "mutasyon": 57,
+  "kontrol_vakalari": [
+    {
+      "id": "H10",
+      "katman": "Hiçbiri"
+    }
+  ],
+  "katman_dagilimi": {
+    "GİB şematronu": 25,
+    "Hiçbiri": 17,
+    "Yalnız ek aritmetik": 10,
+    "XSD": 5
+  },
+  "resmi_yakalama_pct": 52.6,
+  "resmi_kacirilan": 27,
+  "kacirilan_ek_katman_yakaladi": 10,
+  "kacirilan_hicbiri": 17,
+  "kategori": [
+    {
+      "kategori": "Aritmetik",
+      "n": 9,
+      "resmi": 1,
+      "pct": 11.0
+    },
+    {
+      "kategori": "Başlık",
+      "n": 11,
+      "resmi": 8,
+      "pct": 73.0
+    },
+    {
+      "kategori": "Döviz",
+      "n": 5,
+      "resmi": 1,
+      "pct": 20.0
+    },
+    {
+      "kategori": "Kimlik",
+      "n": 7,
+      "resmi": 3,
+      "pct": 43.0
+    },
+    {
+      "kategori": "Kod ve oran",
+      "n": 6,
+      "resmi": 4,
+      "pct": 67.0
+    },
+    {
+      "kategori": "Tevkifat",
+      "n": 8,
+      "resmi": 3,
+      "pct": 38.0
+    },
+    {
+      "kategori": "Yapı",
+      "n": 5,
+      "resmi": 5,
+      "pct": 100.0
+    },
+    {
+      "kategori": "İstisna",
+      "n": 6,
+      "resmi": 5,
+      "pct": 83.0
+    }
+  ],
+  "kontrol_turu": [
+    {
+      "kontrol_turu": "Alanlar arası tutarlılık",
+      "n": 21,
+      "resmi": 9,
+      "sadece_ek": 2,
+      "hicbiri": 10,
+      "pct": 43.0
+    },
+    {
+      "kontrol_turu": "Anlamsal doğruluk",
+      "n": 9,
+      "resmi": 2,
+      "sadece_ek": 0,
+      "hicbiri": 7,
+      "pct": 22.0
+    },
+    {
+      "kontrol_turu": "Aritmetik",
+      "n": 8,
+      "resmi": 0,
+      "sadece_ek": 8,
+      "hicbiri": 0,
+      "pct": 0.0
+    },
+    {
+      "kontrol_turu": "Biçim ve yapı",
+      "n": 11,
+      "resmi": 11,
+      "sadece_ek": 0,
+      "hicbiri": 0,
+      "pct": 100.0
+    },
+    {
+      "kontrol_turu": "Kod listesi",
+      "n": 8,
+      "resmi": 8,
+      "sadece_ek": 0,
+      "hicbiri": 0,
+      "pct": 100.0
+    }
+  ],
+  "hicbiri_listesi": [
+    "K02",
+    "K03",
+    "K04",
+    "K07",
+    "B02",
+    "B09",
+    "B11",
+    "C04",
+    "C05",
+    "H07",
+    "H08",
+    "T01",
+    "T08",
+    "I03",
+    "D02",
+    "D04",
+    "D05"
+  ],
+  "sadece_ek_listesi": [
+    "H01",
+    "H02",
+    "H03",
+    "H04",
+    "H05",
+    "H06",
+    "T04",
+    "T05",
+    "T07",
+    "D03"
+  ],
+  "motor": "efatura-kontrol 0.1.0 @ 87c0ca0 (GİB şematron 20260701, UBL-TR 1.2.1, e-Fatura Paketi 29)"
+}

@@ -1,0 +1,59 @@
+id,taban,kategori,kontrol_turu,hata,etki,katman,resmi_ret,resmi_kurallar,gib_mesaji,ek_katman_bulgulari
+K01,A,Kimlik,Biçim ve yapı,Satıcı VKN'si 9 hane,Belge yanlış mükellefe bağlanır,GİB şematronu,True,sch-PartyIdentificationTCKNVKNCheck-1,cbc:ID elemanının schemeID niteliği değeri 'VKN' olması durumunda cbc:ID elemanına 10 haneli vergi kimlik numarası yazılmalıdır.,
+K02,A,Kimlik,Anlamsal doğruluk,Satıcı VKN'si 10 hane ama kontrol hanesi yanlış,Var olmayan bir VKN ile fatura,Hiçbiri,False,,,
+K03,A,Kimlik,Anlamsal doğruluk,Alıcı VKN'si kontrol hanesi yanlış,KDV indirimi yanlış mükellefe gider,Hiçbiri,False,,,
+K04,A,Kimlik,Anlamsal doğruluk,"Alıcı TCKN'li (gerçek kişi), TCKN kontrol hanesi yanlış",Var olmayan kişi adına fatura,Hiçbiri,False,,,
+K05,A,Kimlik,Biçim ve yapı,VKN'li alıcıda unvan (PartyName) yok,Alıcı kimliği eksik,GİB şematronu,True,sch-PartyIdentificationPartyNamePersonCheck-3,schemeID niteliği değeri 'VKN' olması durumunda cac:PartyName elemanı bulunmalıdır.,
+K06,A,Kimlik,Biçim ve yapı,schemeID=VKN ama değer 11 haneli,Kimlik türü karışıklığı,GİB şematronu,True,sch-PartyIdentificationTCKNVKNCheck-1,cbc:ID elemanının schemeID niteliği değeri 'VKN' olması durumunda cbc:ID elemanına 10 haneli vergi kimlik numarası yazılmalıdır.,
+K07,A,Kimlik,Alanlar arası tutarlılık,Satıcı ve alıcı VKN'si aynı,Kendi kendine fatura; ana veri hatası,Hiçbiri,False,,,
+B01,A,Başlık,Biçim ve yapı,Fatura numarası biçimi hatalı (küçük harf seri),Numaralandırma kuralı ihlali,GİB şematronu,True,sch-InvoiceIDCheck-1,Geçersiz cbc:ID elemanı değeri. cbc:ID elemanı 'ABC2009123456789' formatında olmalıdır.,
+B02,A,Başlık,Alanlar arası tutarlılık,"Fatura numarasında yıl, düzenleme tarihiyle uyumsuz (2025)",Seri/yıl karışıklığı,Hiçbiri,False,,,
+B03,A,Başlık,Biçim ve yapı,UUID biçimi geçersiz,Belge tekil tanımlanamaz,GİB şematronu,True,sch-UUIDCheck-1,Geçersiz cbc:UUID elemanı değeri. cbc:UUID elemanı UUID formatında olmalıdır.,
+B04,A,Başlık,Anlamsal doğruluk,Düzenleme tarihi ileri bir tarih (2099-01-15),"Dönem kayması, erken KDV beyanı",GİB şematronu,True,sch-TimeCheck-1,Geçersiz cbc:IssueDate değeri : '2099-01-15' cbc:IssueDate alanı günün tarihinden ileri bir tarih olamaz,
+B05,A,Başlık,Anlamsal doğruluk,Düzenleme tarihi 2004 (e-fatura öncesi),Geçersiz dönem,GİB şematronu,True,sch-TimeCheck-2,Geçersiz cbc:IssueDate değeri : '2004-06-01' cbc:IssueDate alanı 01.01.2005 tarihinden önce bir tarih olamaz,
+B06,A,Başlık,Kod listesi,Senaryo (ProfileID) kod listesinde yok,Belge işlenemez,GİB şematronu,True,sch-ProfileIDCheck-1,Geçersiz cbc:ProfileID elemanı değeri : 'TEMEL'. Geçerli cbc:ProfileID değerleri için ProfileIDType listesine bakınız.,
+B07,A,Başlık,Kod listesi,Fatura tipi kod listesinde yok,Belge işlenemez,GİB şematronu,True,sch-InvoiceTypeCodeCheck-1,Geçersiz cbc:InvoiceTypeCode elemanı değeri : 'SATIŞ'. Geçerli cbc:InvoiceTypeCode değerleri için kod listesine bakınız.,
+B08,A,Başlık,Alanlar arası tutarlılık,TICARIFATURA senaryosunda IADE tipi,İade süreci yanlış senaryoda,GİB şematronu,True,sch-IADEInvioceCheck-1; sch-InvoiceTypeCodeCheck-2,"IADE, TEVKIFATIADE ve YTBIADE fatura tiplerinde iade bilgilerini içeren cbc:DocumentTypeCode değeri IADE ve 16 haneli ID değeri olan iade fatura sayısı kadar ca",
+B09,A,Başlık,Alanlar arası tutarlılık,Satır sayısı alanı (LineCountNumeric) gerçek satır sayısından farklı,Tutarsız başlık,Hiçbiri,False,,,
+B10,A,Başlık,Kod listesi,Özelleştirme numarası eski (TR1.0),Yanlış kılavuz sürümü,GİB şematronu,True,sch-CustomizationIDCheck-1,Geçersiz cbc:CustomizationID elemanı değeri : 'TR1.0' cbc:CustomizationID elemanı değeri 'TR1.2' veya 'TR1.2.1' olmalıdır.,
+B11,A,Başlık,Alanlar arası tutarlılık,İki satır aynı satır numarasına (ID=1) sahip,Satır referansı belirsiz,Hiçbiri,False,,,
+C01,A,Kod ve oran,Kod listesi,Birim kodu 'ADET' (UN/ECE yerine yerel kısaltma),Belge reddedilir,GİB şematronu,True,sch-GeneralUnitCodeCheck-1,Geçersiz unitCode niteliği : 'ADET'. Geçerli değerler için kod listesine bakınız.,
+C02,A,Kod ve oran,Kod listesi,Para birimi kodu 'TL',Belge reddedilir,GİB şematronu,True,sch-CurrencyCodeCheck-1; sch-CurrencyCodeCheck-6; sch-GeneralCurrencyIDCheck-1,Geçersiz cbc:DocumentCurrencyCode elemanı değeri. Geçerli değerler için kod listesine bakınız.,
+C03,A,Kod ve oran,Kod listesi,Vergi tipi kodu listede yok (9999),Vergi türü tanınmaz,GİB şematronu,True,sch-TaxTypeCheck-1,Geçersiz cbc:TaxTypeCode değeri : '9999'. Geçerli değerler için kod listesine bakınız.,
+C04,A,Kod ve oran,Anlamsal doğruluk,"KDV oranı %18 (Temmuz 2023 öncesi oran), tutarlar tutarlı","Eksik KDV tahsili, vergi farkı",Hiçbiri,False,,,
+C05,A,Kod ve oran,Anlamsal doğruluk,"KDV oranı %19 (mevzuatta olmayan oran), tutarlar tutarlı",Hatalı vergi,Hiçbiri,False,,,
+C06,A,Kod ve oran,Alanlar arası tutarlılık,KDV %0 ama tip SATIS ve muafiyet kodu yok,Gerekçesiz vergisiz satış,GİB şematronu,True,sch-TaxExemptionReasonCheck-1,Vergi miktarı 0 olan 0015 vergi kodlu KDV için cbc:TaxExemptionReason(vergi istisna muhafiyet sebebi) elemanı bulunmalıdır ve boş değer içermemelidir.,
+H01,A,Aritmetik,Aritmetik,Satır tutarı ≠ miktar × birim fiyat,Yanlış tutar faturalanır,Yalnız ek aritmetik,False,,,hesap-satir
+H02,A,Aritmetik,Aritmetik,Satır KDV tutarı ≠ matrah × oran,KDV hatalı,Yalnız ek aritmetik,False,,,hesap-vergi
+H03,A,Aritmetik,Aritmetik,Belge KDV toplamı ≠ alt toplamların toplamı,Beyana yanlış KDV,Yalnız ek aritmetik,False,,,hesap-vergi-toplam
+H04,A,Aritmetik,Aritmetik,Ödenecek tutar yanlış,Fazla/eksik tahsilat,Yalnız ek aritmetik,False,,,hesap-dip-odenecek
+H05,A,Aritmetik,Aritmetik,Vergiler dahil tutar yanlış,Tutarsız dip toplam,Yalnız ek aritmetik,False,,,hesap-dip-odenecek; hesap-dip-vergi-dahil
+H06,A,Aritmetik,Aritmetik,Dip mal/hizmet toplamı ≠ satır tutarları toplamı,Tutarsız dip toplam,Yalnız ek aritmetik,False,,,hesap-dip-satir; hesap-dip-vergi-haric
+H07,A,Aritmetik,Anlamsal doğruluk,Tüm tutarlar tutarlı biçimde %10 fazla (birim fiyat girişi hatalı),İç tutarlı ama yanlış fatura,Hiçbiri,False,,,
+H08,A,Aritmetik,Alanlar arası tutarlılık,"Negatif miktar ve tutar (iade, satış faturasına eksi satır olarak yazılmış), toplamlar tutarlı",İade yanlış belge tipiyle,Hiçbiri,False,,,
+H09,A,Aritmetik,Biçim ve yapı,Tutarlarda 3 ondalık hane,"Yuvarlama farkı, mutabakat sorunu",GİB şematronu,True,sch-decimalCheck-1,"Geçersiz cbc:PayableAmount elemanı değeri. cbc:PayableAmount elemanı noktadan önce en fazla 15 , noktadan sonra(kuruş) en fazla 2 haneli olmalıdır.",
+H10,A,Kontrol vakası,Aritmetik,Ödenecek tutarda 1 kuruş fark (tolerans içi kontrol vakası),İhmal edilebilir,Hiçbiri,False,,,
+T01,T,Tevkifat,Alanlar arası tutarlılık,TEVKIFAT tipinde tevkifat bloğu yok,"Tevkifat uygulanmaz, alıcı fazla öder",Hiçbiri,False,,,
+T02,T,Tevkifat,Kod listesi,Tevkifat kodu listede yok (699),Tevkifat türü tanınmaz,GİB şematronu,True,sch-WithholdingTaxTotalCheck-2; sch-WithholdingTaxTotalCheck-3,Geçersiz cac:TaxCategory/cac:TaxScheme/cbc:TaxTypeCode elemanı : '699'. Geçerli değerler için kod listesine bakınız.,
+T03,T,Tevkifat,Alanlar arası tutarlılık,"Tevkifat kodu ile oranı uyumsuz (604 kodu, %90)",Yanlış tevkifat oranı,GİB şematronu,True,sch-WithholdingTaxTotalCheck-3,Uyumsuz vergi tipi yüzdesi: '604' vergi tipinin yüzdesi '90' olamaz,
+T04,T,Tevkifat,Aritmetik,Tevkifat tutarı ≠ KDV × oran (kod ve oran doğru),Eksik/fazla tevkifat,Yalnız ek aritmetik,False,,,hesap-tevkifat
+T05,T,Tevkifat,Aritmetik,Ödenecek tutardan tevkifat düşülmemiş,Alıcı tevkifatı da satıcıya öder,Yalnız ek aritmetik,False,,,hesap-dip-odenecek
+T06,A,Tevkifat,Alanlar arası tutarlılık,SATIS tipinde tevkifat bloğu var (satır ve belge düzeyinde),Tip ile içerik çelişkisi,GİB şematronu,True,sch-GeneralWithholdingTaxTotalCheck-1,"Uyumsuz fatura tipi: 'SATIS'. cac:WithholdingTaxTotal elamanı varken fatura tipi TEVKIFAT,YTBTEVKIFAT,IADE,YTBIADE,SGK,SARJ ve SARJANLIK olabilir.",
+T08,A,Tevkifat,Alanlar arası tutarlılık,SATIS tipinde tevkifat yalnız satır düzeyinde,"Tip ile içerik çelişkisi, dip toplama yansımaz",Hiçbiri,False,,,
+T07,T,Tevkifat,Alanlar arası tutarlılık,"Tevkifat yalnız satırda var, belge düzeyinde yok",Dip toplamda tevkifat görünmez,Yalnız ek aritmetik,False,,,hesap-dip-odenecek
+I01,I,İstisna,Alanlar arası tutarlılık,"ISTISNA tipinde muafiyet kodu yok, gerekçe metni duruyor","Gerekçesiz istisna, cezalı tarhiyat riski",GİB şematronu,True,sch-TaxExemptionReasonCodeCheck-2,Geçersiz cbc:TaxExemptionReasonCode niteliği : '' cbc:TaxExemptionReason(vergi istisna muhafiyet sebebi) elemanı varken cbc:TaxExemptionReasonCode elamanı dolu ,
+I06,I,İstisna,Alanlar arası tutarlılık,ISTISNA tipinde ne muafiyet kodu ne gerekçe metni var,"Gerekçesiz istisna, cezalı tarhiyat riski",GİB şematronu,True,sch-TaxExemptionReasonCheck-1,Vergi miktarı 0 olan 0015 vergi kodlu KDV için cbc:TaxExemptionReason(vergi istisna muhafiyet sebebi) elemanı bulunmalıdır ve boş değer içermemelidir.,
+I02,I,İstisna,Kod listesi,Muafiyet kodu listede yok (399),Geçersiz istisna gerekçesi,GİB şematronu,True,sch-TaxExemptionReasonCodeCheck-2,Geçersiz cbc:TaxExemptionReasonCode niteliği : '399' cbc:TaxExemptionReason(vergi istisna muhafiyet sebebi) elemanı varken cbc:TaxExemptionReasonCode elamanı do,
+I03,I,İstisna,Alanlar arası tutarlılık,ISTISNA tipinde KDV %20 hesaplanmış,"İstisna uygulanmamış, fazla vergi",Hiçbiri,False,,,
+I04,I,İstisna,Alanlar arası tutarlılık,İhracat istisna kodu (701) TEMELFATURA/ISTISNA'da,Yanlış istisna türü,GİB şematronu,True,sch-TaxExemptionReasonCodeCheck-5,"Uyumsuz fatura tipi: 'ISTISNA'. Vergi istisna muhafiyet kodu : '701' için fatura tipi IHRACKAYITLI,IADE veya SGK olabilir.",
+I05,I,İstisna,Alanlar arası tutarlılık,Özel matrah kodu (801) ISTISNA tipinde,Yanlış istisna türü,GİB şematronu,True,sch-TaxExemptionReasonCodeCheck-4,"Uyumsuz fatura tipi: 'ISTISNA'. Vergi istisna muhafiyet kodu : '801' için fatura tipi OZELMATRAH,IADE veya SGK olabilir.",
+D01,D,Döviz,Alanlar arası tutarlılık,USD faturada kur bilgisi yok,TL karşılığı hesaplanamaz,GİB şematronu,True,sch-CurrencyCodeCheck-6,Para birimi TRY olmayan belgelerde kur bilgisi zorunludur.,
+D02,D,Döviz,Anlamsal doğruluk,"Kur değeri gerçekçi değil (0,0412)",TL karşılığı 1.000 kat hatalı,Hiçbiri,False,,,
+D03,D,Döviz,Alanlar arası tutarlılık,Bir tutar alanı farklı para biriminde (EUR),Karışık para birimi,Yalnız ek aritmetik,False,,,hesap-para-birimi
+D04,D,Döviz,Alanlar arası tutarlılık,Kaynak para birimi belge para biriminden farklı (EUR),Kur yanlış paraya ait,Hiçbiri,False,,,
+D05,D,Döviz,Alanlar arası tutarlılık,Belge para birimi USD ama kur hedefi USD (TRY değil),TL karşılığı yok,Hiçbiri,False,,,
+Y01,A,Yapı,Biçim ve yapı,"Eleman sırası bozuk (IssueDate, UUID'den önce)",Belge ayrıştırılamaz,XSD,True,xsd-element-content,Element '{urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}IssueDate': This element is not expected. Expected is ( {urn:oasis:names:specific,
+Y02,A,Yapı,Biçim ve yapı,Fatura numarası (cbc:ID) yok,Belge ayrıştırılamaz,XSD,True,sch-InvoiceIDCheck-1; xsd-element-content,Geçersiz cbc:ID elemanı değeri. cbc:ID elemanı 'ABC2009123456789' formatında olmalıdır.,
+Y03,A,Yapı,Biçim ve yapı,Alıcı bloğu yok,Belge ayrıştırılamaz,XSD,True,xsd-element-content,Element '{urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2}TaxTotal': This element is not expected. Expected is ( {urn:oasis:names:speci,
+Y04,A,Yapı,Biçim ve yapı,Tutar alanında para birimi niteliği yok,Belge ayrıştırılamaz,XSD,True,xsd-cvc-complex-type-4,Element '{urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}PayableAmount': The attribute 'currencyID' is required but missing.,
+Y05,A,Yapı,Biçim ve yapı,"Tutarda ondalık ayırıcı virgül (15385,00)",Belge ayrıştırılamaz,XSD,True,sch-decimalCheck-1; xsd-cvc-datatype-valid-1-2-1,"Geçersiz cbc:PayableAmount elemanı değeri. cbc:PayableAmount elemanı noktadan önce en fazla 15 , noktadan sonra(kuruş) en fazla 2 haneli olmalıdır.",
