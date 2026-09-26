@@ -1,0 +1,4 @@
+efatura-kontrol @ git+https://github.com/BerkantACUN/efatura-kontrol@87c0ca01d160840f00356ea97fe836d97f73ec55
+lxml>=5
+pandas>=2.2
+matplotlib>=3.8
